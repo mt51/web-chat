@@ -1,5 +1,5 @@
 {
-  "name": "node-im",
+  "name": "webchat",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "config": "^2.0.1",
+    "jsonwebtoken": "^8.3.0",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
+    "koa-jwt": "^3.5.1",
     "koa-router": "^7.4.0",
     "koa-session": "^5.9.0",
     "koa-static": "^5.0.0",
+    "mongoose": "^5.2.14",
     "sockjs": "^0.3.19"
   },
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "supertest": "^3.3.0"
   }
 }

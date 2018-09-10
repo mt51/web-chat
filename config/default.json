@@ -1,0 +1,7 @@
+{
+  "jwt": {
+    "expire": "14 days",
+    "secret": "webchat secert"
+  },
+  "db": "mongodb://localhost/webchat"
+}
