@@ -3,5 +3,5 @@
     "expire": "14 days",
     "secret": "webchat secert"
   },
-  "db": "mongodb://localhost/webchat"
+  "db": "mongodb://localhost:27017/webchat"
 }

@@ -2,7 +2,7 @@ const { User } = require('../models')
 
 module.exports = class userProxy {
   static updateToken(account, token) {
-    return User.update({
+    return User.updateOne({
       id: account,
     }, {
       $set: {
@@ -14,6 +14,12 @@ module.exports = class userProxy {
   static getById(account) {
     return User.find({
       id: account
+    })
+  }
+
+  static list () {
+    return User.find().then(data => {
+      console.log(data)
     })
   }
 }

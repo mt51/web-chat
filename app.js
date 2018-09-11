@@ -15,6 +15,7 @@ app.use(static(path.resolve(__dirname, 'public')))
 app.use(body())
 
 app.use(router.routes())
+.use(router.allowedMethods())
 
 const server = app.listen(3000)
 

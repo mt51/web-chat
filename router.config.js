@@ -3,7 +3,7 @@ const {user, history, group } = require('./controllers')
 
 const router = new Router()
 
-router.get('/user/list', user.list)
+router.get('/user', user.list)
 .get('/user/:id', user.info)
 .post('/login', user.login)
 .get('/group/list', group.list)
