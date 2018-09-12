@@ -11,15 +11,13 @@ module.exports = class userProxy {
     })
   }
   
-  static getById(account) {
-    return User.find({
+  static getById(account, columns = ['id', 'username', 'avatar']) {
+    return User.findOne({
       id: account
-    })
+    }, columns.join(' '))
   }
 
   static list () {
-    return User.find().then(data => {
-      console.log(data)
-    })
+    return User.find()
   }
 }

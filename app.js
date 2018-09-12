@@ -1,11 +1,12 @@
 const Koa = require('koa')
-const Router = require('koa-router')
+const jwt = require('koa-jwt')
 const body = require('koa-body')
 const static = require('koa-static')
 const path = require('path')
-const fs = require('fs')
 const sockjs = require('sockjs')
 const router = require('./router.config')
+const config = require('config')
+const secret = config.get('jwt.secret')
 
 
 const app =  new Koa()
@@ -13,6 +14,22 @@ const app =  new Koa()
 
 app.use(static(path.resolve(__dirname, 'public')))
 app.use(body())
+
+app.use((ctx, next) => {
+  return next().catch(err => {
+    if (err.status === 401) {
+      ctx.status = 401
+      ctx.body = {
+        code: -1,
+        msg: '请先登录'
+      }
+    } else {
+      throw err
+    }
+  })
+})
+
+app.use(jwt({secret}).unless({path: ['login']}))
 
 app.use(router.routes())
 .use(router.allowedMethods())
@@ -30,4 +47,4 @@ sockjs_echo.on('connection', function(conn) {
     });
 });
 
-sockjs_echo.installHandlers(server, {prefix:'/echo'})
+sockjs_echo.installHandlers(server, {prefix:'/websocket'})

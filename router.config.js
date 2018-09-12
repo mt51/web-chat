@@ -9,6 +9,7 @@ router.get('/user', user.list)
 .get('/group/list', group.list)
 .get('/group/:id', group.info)
 .get('/group/:id/member', group.member)
-.get('/history/:sender/:recver:', history.list)
+.post('/history/:sender/:recver', history.list)
+.post('/history', history.add)
 
 module.exports = router
