@@ -1,7 +1,6 @@
 const config = require('config')
 const mongoose = require('mongoose')
 const db = config.get('db')
-console.log(db)
 
 mongoose.Promise = global.Promise
 
