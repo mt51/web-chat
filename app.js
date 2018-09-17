@@ -32,7 +32,7 @@ app.use((ctx, next) => {
   })
 })
 
-// app.use(jwt({secret}).unless({path: ['/login']}))
+app.use(jwt({secret}).unless({path: ['/login']}))
 
 app.use(router.routes())
 .use(router.allowedMethods())

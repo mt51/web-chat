@@ -17,7 +17,12 @@ module.exports = class userProxy {
     }, columns.join(' '))
   }
 
-  static list () {
-    return User.find()
+  static list (token) {
+    console.log(token)
+    return User.find({
+      token: {
+        $nor: token
+      }
+    })
   }
 }

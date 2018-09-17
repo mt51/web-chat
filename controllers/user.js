@@ -8,7 +8,8 @@ const expire = config.get('jwt.expire')
 module.exports = class UserController {
   static async list(ctx) {
     let result = []
-    result = await UserProxy.list()
+    const token = ctx.request.header.authorization.substring(7)
+    result = await UserProxy.list(token)
     ctx.body = {
       code: 0,
       data: result
