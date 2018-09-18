@@ -18,11 +18,10 @@ module.exports = class userProxy {
   }
 
   static list (token) {
-    console.log(token)
     return User.find({
       token: {
-        $nor: token
+        $ne: token
       }
-    })
+    }, {'id': 1, 'username': 1, 'avatar': 1, '_id': 0})
   }
 }
